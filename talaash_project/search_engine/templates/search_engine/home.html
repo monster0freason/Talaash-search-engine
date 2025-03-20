@@ -1,0 +1,25 @@
+{% extends 'search_engine/base.html' %}
+
+{% block content %}
+<div class="centered" style="margin-top: 150px;">
+    <h1 class="logo">तलाश</h1>
+    
+    <form class="search-form" action="{% url 'search_results' %}" method="get">
+        <div class="search-box">
+            <input type="text" name="q" class="search-input" placeholder="type1/type2/type3 your search query" required>
+            <button type="submit" class="search-button">Search</button>
+        </div>
+    </form>
+    
+    <div class="instructions">
+        <h3>Search Instructions:</h3>
+        <p>Enter your query in the format: <strong>[query type] [search terms]</strong></p>
+        <ul>
+            <li><strong>type1</strong>: AND search (all terms must be present)</li>
+            <li><strong>type2</strong>: OR search (any term can be present)</li>
+            <li><strong>type3</strong>: Wildcard search (use * as wildcard, e.g., "mar*et")</li>
+        </ul>
+        <p>Example: <em>type1 market price</em> will search for documents containing both "market" AND "price"</p>
+    </div>
+</div>
+{% endblock %}

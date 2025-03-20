@@ -1,0 +1,26 @@
+{% extends 'search_engine/base.html' %}
+
+{% block content %}
+<div>
+    <a href="{% url 'home' %}">
+        <h1 class="logo logo-compact">तलाश</h1>
+    </a>
+    
+    <form class="search-form" action="{% url 'search_results' %}" method="get">
+        <div class="search-box">
+            <input type="text" name="q" class="search-input" placeholder="type1/type2/type3 your search query" required>
+            <button type="submit" class="search-button">Search</button>
+        </div>
+    </form>
+    
+    <div class="document-container">
+        <h3 class="document-title">{{ document.title }}</h3>
+        <div class="document-content">
+            {{ document.description|linebreaks }}
+        </div>
+        <p>
+            <a href="javascript:history.back()">Back to search results</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

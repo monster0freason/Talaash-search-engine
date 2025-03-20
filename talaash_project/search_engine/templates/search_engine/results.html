@@ -1,0 +1,39 @@
+{% extends 'search_engine/base.html' %}
+
+{% block content %}
+<div>
+    <a href="{% url 'home' %}">
+        <h1 class="logo logo-compact">तलाश</h1>
+    </a>
+    
+    <form class="search-form" action="{% url 'search_results' %}" method="get">
+        <div class="search-box">
+            <input type="text" name="q" class="search-input" value="{{ query }}" required>
+            <button type="submit" class="search-button">Search</button>
+        </div>
+    </form>
+    
+    {% if error %}
+    <div class="error-message">{{ error }}</div>
+    {% endif %}
+    
+    <div class="search-results">
+        <p>About {{ results|length }} results</p>
+        
+        {% if results %}
+            {% for document in results %}
+            <div class="result-item">
+                <h2 class="result-id">
+                    <a href="{% url 'document_detail' document.id %}">{{ document.id }}</a>
+                </h2>
+                <p class="result-title">{{ document.title }}</p>
+            </div>
+            {% endfor %}
+        {% else %}
+            {% if not error %}
+            <p>No documents match your search criteria.</p>
+            {% endif %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
