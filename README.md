@@ -4,6 +4,7 @@ Talaash is a Django-based search engine using a BigramIndex and the Reuters-2157
 
 ## Demo
 
-[![Demo](media/demo.png)](https://www.youtube.com/watch?v=your_video_id)
+![Demo](media/demo.gif)
+
 
 
